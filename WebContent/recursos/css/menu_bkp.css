@@ -1,0 +1,24 @@
+body {background:#02679a;font-family:Nunito, arial, verdana;}
+#accordian {background:#02679a;width:250px;margin:2px auto 0 auto;color:white;box-shadow:0 5px 15px 1px rgba(0, 0, 0, 0.6), 0 0 200px 1px rgba(255, 255, 255, 0.5);}
+#accordian h3 {font-size:12px;line-height:34px;padding:0 10px;cursor:pointer;background:#ecf1fa;background:linear-gradient(#006699, #002535);}
+#accordian h3:hover {text-shadow:0 0 1px rgba(255, 255, 255, 0.7);}
+#accordian h3 span {font-size:16px;margin-right:10px;}
+#accordian li {list-style-type:none;}
+#accordian ul ul li a {color:white;text-decoration:none;font-size:11px;line-height:27px;display:block;padding:0 15px;transition:all 0.15s;}
+#accordian ul ul li a:hover {background:#ecf1fa;border-left:5px solid yellow;color:black;font-weight:bold;}
+/*#accordian ul ul li a:hover {background:#003545;border-left:5px solid yellow;}*/
+#accordian ul ul {display:none;}
+#accordian li.active ul {display:block;}
+
+/*
+body {background:#4EB889;font-family:Nunito, arial, verdana;}
+#accordian {background:#005F8D;width:250px;margin:2px auto 0 auto;color:white;box-shadow:0 5px 15px 1px rgba(0, 0, 0, 0.6), 0 0 200px 1px rgba(255, 255, 255, 0.5);}
+#accordian h3 {font-size:12px;line-height:34px;padding:0 10px;cursor:pointer;background:#005F8D;background:linear-gradient(#005F8D, #002535);}
+#accordian h3:hover {text-shadow:0 0 1px rgba(255, 255, 255, 0.7);}
+#accordian h3 span {font-size:16px;margin-right:10px;}
+#accordian li {list-style-type:none;}
+#accordian ul ul li a {color:white;text-decoration:none;font-size:11px;line-height:27px;display:block;padding:0 15px;transition:all 0.15s;}
+#accordian ul ul li a:hover {background:#003545;border-left:5px solid yellow;}
+#accordian ul ul {display:none;}
+#accordian li.active ul {display:block;}
+*/

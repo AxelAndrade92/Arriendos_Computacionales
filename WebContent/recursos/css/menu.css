@@ -1,0 +1,24 @@
+*{margin:0;padding:0;}
+.menu {margin:0px auto;width:990px;height:45px;position:relative;}
+.menu ul {background:transparent url(../image/topnavbg.jpg) repeat-x top center;list-style:none;overflow:hidden;
+border-radius:8px 8px 8px 8px;-webkit-border-radius:8px 8px 8px 8px;-moz-border-radius:8px 8px 8px 8px;}
+.menu li {display:inline;float:left;width:165px;background-image:linear-gradient(to top, #666666 0%, #A1A1A1 100%);}
+/*last menu item should not have a blue pipe*/
+.menu>ul>li:last-child {border:0;}
+.menu li a {margin:0 auto;padding:0;display:block;border-left:1px solid #C0C0C0;color:#fff;letter-spacing:0.1em;
+font:400 12px/37px Arial, Helvetica, Verdana, sans-serif;text-align:center;text-decoration:none;}
+/* transition:background 0.5s ease; -webkit-transition:background 0.5s ease;-moz-transition:background 0.5s ease; */
+
+.menu li a:hover {background:#d67025 url(../image/topnavbg2.jpg) repeat-x top left;background-image:linear-gradient(to top, #d67025 0%, #ECAB04 100%);}
+.menu ul ul.child{background:#000;height:0;width:0;float:left;visibility:hidden;border:0;}
+
+/* border-radius:0px 0px 8px 8px; -webkit-border-radius:0px 0px 8px 8px;-moz-border-radius:0px 0px 8px 8px;
+transition:all 0.5s ease; -moz-transition:all 0.5s ease; -webkit-transition:all 0.5s ease; -ms-transition:all 0.5s ease; -o-transition:all 0.5s ease; */ 
+.menu ul ul.child li {float:left;clear:both;}
+.menu ul ul.child li a {border:0;}
+.menu ul li:hover ul.child {background:#666666;height:auto;width:165px;visibility:visible;display:block;background-image:linear-gradient(to top, #666666 0%, #A1A1A1 100%);}
+
+.menu ul:hover ul.child li a {border:0;}
+.menu ul li:hover ul.child li a:hover {background:#d67025;background-image:linear-gradient(to top, #d67025 0%, #ECAB04 100%);}
+/* -webkit-transition:background 0.5s ease; -moz-transition:background 0.5s ease; transition:background 0.5s ease; */
+

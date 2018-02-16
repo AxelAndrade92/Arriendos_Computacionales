@@ -1,0 +1,223 @@
+/*reset css*/
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q,
+	samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr,
+	th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video
+	{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent
+	;
+	
+	
+}
+
+body {
+	line-height: 1
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block
+}
+
+nav ul {
+	list-style: none
+}
+
+blockquote, q {
+	quotes: none
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+	content: none
+}
+
+mark {
+	background-color: #ff9;
+	color: #000;
+	font-style: italic;
+	font-weight: bold
+}
+
+hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #ccc;
+	margin: 1em 0;
+	padding: 0
+}
+
+input, select {
+	vertical-align: middle
+}
+
+table {
+	border-collapse: collapse
+}
+
+/*CSS HOME PAGE*/
+body {
+	background: #c0c0c0;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+/*border-color:#007998;*/
+input[type=submit], input[type=button] {
+	background: #FC8C0E;
+	border-color: #ff8040;
+	color: white;
+	text-shadow: 0 -1px 1px rgba(0, 40, 50, 0.35);
+	border-radius: 3px;
+	height: 27px;
+	padding: 0px 5px 0px 5px !important;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+input[type=submit]:hover, input[type=button]:hover {
+	background: #FE9C2D;
+}
+
+#container {
+	margin: 0 auto;
+	width: 1000px;
+}
+
+#container .header {
+	float: left;
+	width: 100%;
+}
+
+
+#container .contenido {
+	float: left;
+	width: 100%;
+	padding: 120px 0px 0px 0px;
+	position: relative;
+}
+
+#container .contenidoNuevo {
+	float: left;
+	width: 100%;
+	padding: 30px 0px 0px 0px;
+	position: relative;
+}
+
+.contenido .centerContent {
+	float: right;
+	margin: 0px 40px 0px 0px;
+	position: relative;
+	width: 100%;
+}
+
+.contenidoNuevo .centerContent {
+	float: right;
+	margin: 0px 40px 0px 0px;
+	position: relative;
+	width: 100%;
+}
+
+.centerContent .title {
+	float: left;
+	width: 100%;
+	color: #e88935;
+}
+
+.centerContent .title h1 {
+	float: left;
+	text-align: right;
+	font-size: 16px;
+	width: 100%;
+	margin: 0px 0px 3px -20px;
+}
+
+.centerContent .tabla {
+	border: 1px solid #ff8000;
+	padding: 10px;
+	width: 460px;
+	position: relative;
+	float: right;
+}
+
+.tabla tr {
+	float: left;
+	width: 100%;
+	padding: 5px 0px 0px 20px;
+}
+
+.tabla h3 {
+	float: left;
+	padding: 10px 0px 5px 10px;
+	color: #e28c4f;
+	font-size: 14px;
+}
+
+.tabla .dato {
+	background: #ffffff;
+	margin: 0px 0px 0px 8px;
+	padding: 5px 0px 6px 20px;
+	line-height: 9px;
+	width: 93%;
+}
+
+.tabla .dato p {
+	float: left;
+	width: 200px;
+	color: #57585a;
+}
+
+.tabla .btn-login {
+	margin: 0px 0px 0px 310px;
+}
+
+.tabla .text {
+	height: 35px;
+}
+
+.tabla .text p {
+	color: #666666;
+}
+
+table {
+	/* IE10 Consumer Preview */
+	background-image: -ms-linear-gradient(bottom, #FFFFFF 80%, #8E9E9A 130%);
+	/* Mozilla Firefox */
+	background-image: -moz-linear-gradient(bottom, #FFFFFF 80%, #8E9E9A 130%);
+	/* Opera */
+	background-image: -o-linear-gradient(bottom, #FFFFFF 80%, #8E9E9A 130%);
+	/* Webkit (Safari/Chrome 10) */
+	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(80, #FFFFFF), color-stop(130, #8E9E9A));
+	/* Webkit (Chrome 11+) */
+	background-image: -webkit-linear-gradient(bottom, #FFFFFF 0%, #8E9E9A 130%);
+	/* W3C Markup, IE10 Release Preview */
+	background-image: linear-gradient(to top, #FFFFFF 80%, #8E9E9A 130%);
+	box-shadow: 0px 0px 15px white;
+}
+
+/*FOOTER*/
+footer .tabla {
+	float: left;
+	width: 100%;
+	padding-left: 20px;
+	height: 140px;
+	color: #ff8c1a;
+	font-size: 12px;
+	padding-top: 8px;
+	margin: 300px auto 0;
+	border: 1px;
+}
+
+/*MENSAJE*/
+.mensajeError {
+	position: absolute;
+	color: red;
+	top: 287px;
+	margin: 0px 0px 0px 70px;
+	z-index: 100;
+	font-weight: bold;
+}

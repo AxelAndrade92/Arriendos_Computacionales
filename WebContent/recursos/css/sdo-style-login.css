@@ -1,0 +1,40 @@
+/*reset css*/
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}
+body{line-height:1}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+nav ul{list-style:none}
+blockquote,q{quotes:none}
+blockquote:before,blockquote:after,q:before,q:after{content:none}
+mark{background-color:#ff9;color:#000;font-weight:bold}
+hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}
+input,select{vertical-align:middle}
+
+/*style propios*/
+body {font-family:Verdana, Lucida, Helvetica, sans-serif;font-size:12px;padding:0;margin:0;background-color:#cbd3dc}
+table{BORDER-COLLAPSE:collapse}
+tr {BORDER-COLLAPSE:collapse}
+td {BORDER-COLLAPSE:collapse}
+div{BORDER-COLLAPSE:collapse}
+
+.cssFranjaAzul {background:#006699;margin:0px auto;width:998px;height:25px;}
+.content{margin:0px auto;width:998px;height:440px;position:relative;background:white;}
+.content .login{float:left;width:500px;margin:20px 0px 0px 0px;}
+.content .login h2{float:left;color:#069;;text-align:center;width:100%;}
+.content .login h3{float:left;color:#399;text-align:center;width:100%;}
+.content .logo{float:left;height:400px;}
+.cssLoginInput3 {float:left;color:#777;border:1px solid #a9a9a9;padding:4px;margin:0px 6px 6px 6px !important;position:relative;text-align:center;}
+.cssLoginInput3 .cssTextoLogin{float:left;width:100%;text-align:center;color:#666666;font-size:12px;margin:0px 0px 30px 0px;}
+.cssLoginInput3 .mensajeError{float:left;width:410px;color:red;font-weight:bold;min-height:25px;padding:0px 0px 10px 40px;text-align:center;}
+
+.cssTablaLoginChica {float:left;position:relative;margin-top:0px;height:147px;padding:40px;}
+.cssTablaLoginChica p{float:left;width:100%;height:35px;}
+.cssTablaLoginChica p span{float:left;width:120px;line-height:20px;text-align:left;}
+.cssTablaLoginChica p input{float:left;width:240px;}
+.cssTablaLoginChica input[type=submit]{float:right;margin:0px 38px 0px 0px;}
+
+/*FOOTER*/
+.footer{float:left;width:978px;background:#006699;text-align:left;height:22px;margin:0px 0px 20px 0px;padding:8px 0px 10px 20px;}
+.footer span{float:left;text-align:left;color:white;width:100%;}
+.footer small{float:left;text-align:left;color:white;width:100%;}
+.cssPiePaginaSDO {	BORDER-BOTTOM:#006699 1px solid; BORDER-LEFT:#006699 1px solid; BACKGROUND-COLOR:#006699; PADDING-LEFT:20px; FONT-FAMILY:Arial; height:40px; COLOR:#ffffff; FONT-SIZE:12px; BORDER-RIGHT:#006699 1px solid;	}
+

@@ -1,0 +1,776 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+	<constant name="struts.enble.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.custom.i18n.resources" value="ApplicationResources" />
+	<constant name="struts.multipart.maxSize" value="30000000" />
+
+<!-- Parámetros para el envío de correos -->
+	<bean class="cl.st.reporte.business.impl.Correo" name="correos" />
+	<constant name="renovaciones.email" value="Ivan.Palma@st-computacion.com" />
+	
+	<constant name="smpt.usuario" value="portal" />
+	<constant name="smpt.password" value="portalservicio." />
+	<constant name="mail.smtp.auth" value="true" />
+	<constant name="mail.smtp.starttls.enable" value="false" />
+	<constant name="mail.smtp.host" value="196.100.10.135" />
+	<constant name="mail.smtp.port" value="587" />
+	<constant name="mail.imap.ssl.enable" value="true" />
+	<constant name="mail.smtp.ssl.trust" value="smtpserver" />
+	<constant name="mail.debug" value="true" />
+	<constant name="origen.email" value="portal@st.cl" />
+<!-- Parámetros para el envío de correos -->
+
+	<package name="reporte" namespace="/" extends="struts-default, json-default" >		
+
+
+			<global-results>
+			<result name="login">/app/login.jsp</result>
+			<result name="successfully">exito.jsp</result>
+			<result name="error">/error.jsp </result>
+		</global-results>
+		
+	
+			
+		
+
+			<action name="ccu" class="cl.st.reporte.controller.actions.RepModCCUAction">
+		
+			<result name="success">app/Mantenedores/repmodccu/listadoActivo.jsp</result>
+			<result name="listar">app/Mantenedores/repmodccu/listadoActivo.jsp</result>
+			<result name="excel">app/Mantenedores/reporte/unidadNegocioExcel.jsp</result>
+			</action>
+	 	
+			
+		
+			
+			<action name="pf" class="cl.st.reporte.controller.actions.ReporteAction">
+		
+			<result name="success">app/Mantenedores/reporte/reporteActivo.jsp</result>
+			<result name="listar">app/Mantenedores/reporte/reporteActivo.jsp</result>
+			<result name="excel">app/Mantenedores/reporte/unidadNegocioExcel.jsp</result>
+			</action>
+			
+			<action name="reporteActivoDetalle"	class="cl.st.reporte.controller.actions.ReporteAction">
+			<result name="listar">app/Mantenedores/reporte/detalleActivo.jsp</result>
+			</action>
+			
+			
+			<action name="unidadNegocio" class="cl.st.reporte.controller.actions.ReporteAction" method="unidadNegocio">
+			<result name="success">app/Mantenedores/reporte/unidadNegocio.jsp</result>
+			<result name="listar">app/Mantenedores/reporte/unidadNegocio.jsp</result>
+			</action>
+			
+			
+			<action name="ccu-admin" class="cl.st.reporte.controller.actions.ReporteAction" >
+			<result name="success">app/Mantenedores/activo/consulta.jsp</result>
+			<result name="listar">app/Mantenedores/activo/consulta.jsp</result>
+			<result name="nuevo">app/Mantenedores/activo/consulta.jsp</result>
+			<result name="detalle">app/Mantenedores/reporte/consulta.jsp</result>
+			<result name="update">app/Mantenedores/activo/consulta.jsp</result>
+			<result name="excel">app/Mantenedores/activo/consultaExcel.jsp</result>
+			</action>
+			 
+			
+			<!-- Action copiado -->
+			<action name="ccu-admin1" class="cl.st.reporte.controller.actions.ReporteCopiado" >
+			<result name="success">app/Mantenedores/ccu_copiado/consulta.jsp</result>
+			<result name="listar">app/Mantenedores/ccu_copiado/consulta.jsp</result>
+			<result name="nuevo">app/Mantenedores/ccu_copiado/consulta.jsp</result>
+			<result name="detalle">app/Mantenedores/reporte/consulta.jsp</result>
+			<result name="update">app/Mantenedores/ccu_copiado/consulta.jsp</result>
+			<result name="excel">app/Mantenedores/ccu_copiado/consultaExcel.jsp</result>
+			</action>
+			<!-- Action copiado -->
+			
+			<!-- Action MARCA -->
+			<action name="Update_marca" class="Prueba_select.MarcaAction" method="update">
+				<result name="success">app/Mantenedores/JSP_Probados/Inserta_Marca.jsp</result>
+			</action>
+			
+			<action name="Insercion_marca" class="Prueba_select.MarcaAction">
+				<result name="success">app/Mantenedores/JSP_Probados/Inserta_Marca.jsp</result>
+			</action>
+			<!-- //////////////////////////////////////////////// -->
+			
+			<!-- action Solicitud Equipos -->
+			
+			<action name="solicitud" class="Prueba_select.SolicitudEquipoAction">
+      	    	<result name="success">app/Mantenedores/JSP_Probados/inserta_solicitud.jsp</result>
+      	    </action> 
+      	    
+			<!-- fin solicitud equipos -->
+			
+			<!-- action Empresa -->
+			<action name="empresa" class="Prueba_select.EmpresaAction">
+      	    	<result name="success">app/Mantenedores/JSP_Probados/inserta_empresa.jsp</result>
+      	    </action>        	    
+      	       
+			<action name="Insercion_empresa" class="Prueba_select.EmpresaAction" method="insertar">
+			<interceptor-ref name="json">
+			<param name="enableSMD">true</param>
+			</interceptor-ref>
+			<!-- <result name="success">app/Mantenedores/JSP_Probados/inserta_empresa.jsp</result> -->
+			<result name="success" type="stream">
+			<param name="contentType">text/html</param>
+			<param name="inputName">inputStream</param>
+			</result>
+			</action>
+			   <action name="Update_Empresa" class="Prueba_select.EmpresaAction" method="actualizar">
+			<interceptor-ref name="json">
+			<param name="enableSMD">true</param>
+			</interceptor-ref>
+			<!-- <result name="success">app/Mantenedores/JSP_Probados/inserta_empresa.jsp</result> -->
+			<result name="success" type="stream">
+			<param name="contentType">text/html</param>
+			<param name="inputName">inputStream</param>
+			</result>
+			</action>
+			
+			<action name="sbu" class="Prueba_select.SbuuAction">
+				<result name="success">app/Mantenedores/JSP_Probados/inserta_sbu.jsp</result>
+			</action>
+			
+			<action name="insercion_sbu" class="Prueba_select.SbuuAction" method="insertar">
+			     <interceptor-ref name="json">
+			<param name="enableSMD">true</param>
+			</interceptor-ref>
+			  <result name="success" type="stream">
+			<param name="contentType">text/html</param>
+			<param name="inputName">inputStream</param>
+			</result>
+			</action>
+			   
+			    <action name="BuscarSbu" class="Prueba_select.SbuuAction" method="listarSbu">
+			     <interceptor-ref name="json">
+			<param name="enableSMD">true</param>
+			</interceptor-ref>
+			   <result type="json" />
+			    </action>
+			   
+			    <action name="Update_sbu" class="Prueba_select.SbuuAction" method="actualizarSbu">
+			     <interceptor-ref name="json">
+			<param name="enableSMD">true</param>
+			</interceptor-ref>
+			   <result name="success" type="stream">
+			<param name="contentType">text/html</param>
+			<param name="inputName">inputStream</param>
+			</result>
+			</action>
+			<!-- fin action sbu -->
+			
+			<!-- action Partes y Piezas -->
+			<action name="piezas" class="Prueba_select.PartesPiezasAction">
+      	    	<result name="success">app/Mantenedores/JSP_Probados/inserta_piezas.jsp</result>
+      	    </action>        	    
+      	    
+      	    <action name="insercion_piezas" class="Prueba_select.PartesPiezasAction" method="insertar">
+				<interceptor-ref name="json">
+					<param name="enableSMD">true</param>
+				</interceptor-ref>
+			<result name="success">app/Mantenedores/JSP_Probados/inserta_piezas.jsp</result>
+		    </action>
+		    
+		    <action name="update_piezas" class="Prueba_select.PartesPiezasAction" method="actualizar">
+				<interceptor-ref name="json">
+					<param name="enableSMD">true</param>
+				</interceptor-ref>
+			<result name="success">app/Mantenedores/JSP_Probados/inserta_piezas.jsp</result>
+		    </action>
+			<!-- Fin action Partes y Piezas -->
+			
+			<!-- action Persona -->
+			<action name="persona" class="Prueba_select.PersonaAction">
+      	    	<result name="success">app/Mantenedores/JSP_Probados/inserta_persona.jsp</result>
+      	    </action>        	    
+      	    <action name="insercion_persona" class="Prueba_select.PersonaAction" method="insertar">
+				<interceptor-ref name="json">
+					<param name="enableSMD">true</param>
+				</interceptor-ref>
+			<!-- <result name="success">app/Mantenedores/JSP_Probados/inserta_persona.jsp</result> -->
+			<result name="success" type="stream">
+			<param name="contentType">text/html</param>
+			<param name="inputName">inputStream</param>
+			</result>
+		    </action>
+		     <action name="update_persona" class="Prueba_select.PersonaAction" method="actualizar">
+				<interceptor-ref name="json">
+					<param name="enableSMD">true</param>
+				</interceptor-ref>
+			<!-- <result name="success">app/Mantenedores/JSP_Probados/inserta_persona.jsp</result> -->
+			<result name="success" type="stream">
+			<param name="contentType">text/html</param>
+			<param name="inputName">inputStream</param>
+			</result>
+		    </action>
+			<!-- fin empresa -->
+			
+			<!-- action solicitud equipos  -->
+			<action name="EquiposSolicitar">
+				<result name="success">app/Mantenedores/activo/inserta_solicitud.jsp</result>			
+			</action>
+			<!-- fin solicitud equipos -->
+			
+			<action name="pf-admin" class="cl.st.reporte.controller.actions.ReporteAction" method="login">
+			<result name="login">app/login.jsp</result>
+			<result name="success">app/Mantenedores/activo/listadoActivo.jsp</result>
+			<result name="listar">app/Mantenedores/activo/listadoActivo.jsp</result>
+			<result name="nuevo">app/Mantenedores/activo/ingresoActivo.jsp</result>
+			<result name="detalle">app/Mantenedores/reporte/detalleActivo.jsp</result>
+			</action>
+			
+			
+			<action name="consulta" class="cl.st.reporte.controller.actions.ReporteAction" >
+		
+			<result name="success">app/Mantenedores/activo/consulta.jsp</result>
+			<result name="listar">app/Mantenedores/activo/consulta.jsp</result>
+			<result name="nuevo">app/Mantenedores/activo/consulta.jsp</result>
+			<result name="detalle">app/Mantenedores/reporte/consulta.jsp</result>
+			</action>
+			
+			<action name="verModificacion" class="cl.st.reporte.controller.actions.ReporteAction" method="autorizarModificacion">
+			
+			<result name="success">app/Mantenedores/activo/autorizarUpdate.jsp</result>
+		
+			</action>
+			
+			
+			
+			
+			<action name="Actualizar" class="cl.st.reporte.controller.actions.ReporteAction" >
+			<result name="update">app/Mantenedores/activo/updateActivo.jsp</result>
+			<result name="listar">app/Mantenedores/activo/listadoActivo.jsp</result>
+			<result name="nuevo">app/Mantenedores/activo/ingresoActivo.jsp</result>
+			
+			</action>
+			
+				<action name="autorizarModificacion" class="cl.st.reporte.controller.actions.ReporteAction" method="autorizarModificacion">
+		
+			</action>
+			
+			
+			<action name="updateActivo" class="cl.st.reporte.controller.actions.ReporteAction" >
+			<result name="update">app/Mantenedores/activo/updateActivo.jsp</result>
+			<result name="listar">app/Mantenedores/activo/listadoActivo.jsp</result>
+			<result name="nuevo">app/Mantenedores/activo/ingresoActivo.jsp</result>
+			</action>
+			
+			
+			
+			<action name="verTraza" class="cl.st.reporte.controller.actions.TrazabilidadAction" >
+			<result name="success">app/Mantenedores/reporte/trazabilidad.jsp</result>
+			
+		
+			</action>
+			
+			<action name="generarExcel" class="cl.st.reporte.controller.actions.GenerarExcelAction" >
+			<result name="excel" type="stream">
+			<param name="contentType">application/vnd.ms-excel</param>
+			<param name="inputName">excelStream</param>
+			<param name="contentDisposition">contentDisposition</param>
+			<param name="bufferSize">1024</param>
+			
+			</result>
+		
+			</action>
+			
+			<action name="validaNumSerie" class="cl.st.reporte.controller.actions.ReporteAction"
+			method="validaSerie">
+			</action>
+			
+			<action name="uploadFile" class="cl.st.reporte.controller.actions.ReporteAction"
+			method="subirArchivo">
+			
+			<result name="success">app/Mantenedores/activo/listadoActivo.jsp</result>
+			<result name="input">app/Mantenedores/activo/listadoActivo.jsp</result>
+			</action>
+		
+		<action name="agendar" class="cl.st.reporte.controller.actions.AgendarAction" >
+			<result name="success">app/Mantenedores/activo/agendamiento.jsp</result>
+			<result name="input">app/Mantenedores/activo/agendamiento.jsp</result>
+			
+			</action>
+			
+			<action name="llamaLstComuna" class="cl.st.reporte.controller.actions.AgendarAction"
+			method="llamaComuna">
+		</action>
+		
+		<action name="llamaPuntoInstalacion" class="cl.st.reporte.controller.actions.AgendarAction"
+			method="llamaInstalacion">
+		</action>
+		
+			<action name="bodega" class="cl.st.reporte.controller.actions.BodegaAction" >
+			<result name="success">app/Mantenedores/activo/bodega.jsp</result>
+			<result name="input">app/Mantenedores/activo/bodega.jsp</result>
+			
+			</action>
+			
+			<action name="Seleccion" class="Prueba_select.SeleccionAction">
+				<result name="INDEX">app/Mantenedores/JSP_Probados/Lista_Sbu.jsp</result>
+				<result name="SUCCESS">app/Mantenedores/JSP_Probados/SegundaPagina.jsp</result>
+			</action>
+			
+			<action name="Insercion_marca" class="Prueba_select.MarcaAction">
+				<result name="success">app/Mantenedores/JSP_Probados/Inserta_Marca.jsp</result>
+				<result name="listar">app/Mantenedores/JSP_Probados/Inserta_Marca.jsp</result>
+				<result name="update">app/Mantenedores/JSP_Probados/Inserta_Marca.jsp</result>
+			</action>		
+			
+<!-- Luis Zambrano -->	
+
+		 <action name="Sucursales" class="Prueba_select.SucursalesAction">
+			<result name="success">app/Mantenedores/JSP_Probados/MantenedorSucursales.jsp</result>
+			</action>
+		
+		<action name="SucursalInsertar" class="Prueba_select.SucursalesAction" method="insertar">
+			<interceptor-ref name="json">
+				<param name="enableSMD">true</param>
+			</interceptor-ref>
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+        		<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<action name="SucursalActualizar" class="Prueba_select.SucursalesAction" method="actualizar">
+			<interceptor-ref name="json">
+				<param name="enableSMD">true</param>
+			</interceptor-ref>
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+        		<param name="inputName">inputStream</param>
+			</result>
+		</action>
+<!-- 30/11/2017 -->
+		<action name="Agendamiento" class="Prueba_select.AgendamientoAction">
+			<result name="success">app/Mantenedores/JSP_Probados/Agendamiento.jsp</result>
+			</action>
+			
+			<action name="AgendamientoInsertar" class="Prueba_select.AgendamientoAction" method="insertar">
+			<interceptor-ref name="json">
+				<param name="enableSMD">true</param>
+			</interceptor-ref>
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+        		<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<action name="CentroCosto" class="Prueba_select.CentroCostoAction" method="pagina">
+			<result name="success">app/Mantenedores/JSP_Probados/MantenedorCentroCosto.jsp</result>
+			</action>
+			
+			<action name="CentroCostoInsertar" class="Prueba_select.CentroCostoAction" method="insertar">
+			<interceptor-ref name="json">
+				<param name="enableSMD">true</param>
+			</interceptor-ref>
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+        		<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<action name="CentroCostoActualizar" class="Prueba_select.CentroCostoAction" method="actualizar">
+			<interceptor-ref name="json">
+				<param name="enableSMD">true</param>
+			</interceptor-ref>
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+        		<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<action name="Agendado" class="Prueba_select.AgendamientoAction" method="agendado">
+			<result name="success">app/Mantenedores/JSP_Probados/Agendados.jsp</result>
+		</action>
+		
+		<action name="Modelo" class="Prueba_select.ModeloAction" method="pagina">
+			<result name="success">app/Mantenedores/JSP_Probados/MantenedorModelo.jsp</result>
+		</action>
+		
+		<action name="ModeloInsertar" class="Prueba_select.ModeloAction" method="insertar">
+			<interceptor-ref name="json">
+				<param name="enableSMD">true</param>
+			</interceptor-ref>
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+        		<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<action name="MarcaInsertar" class="Prueba_select.MarcaAction" method="insertar">
+			<interceptor-ref name="json">
+				<param name="enableSMD">true</param>
+			</interceptor-ref>
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+        		<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<action name="SolicitudGuardar" class="Prueba_select.EnvioSolicitudAction" method="insertar">
+      	     	<interceptor-ref name="json">
+					<param name="enableSMD">true</param>
+				</interceptor-ref>
+       	   		<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+        		<param name="inputName">inputStream</param>
+			</result>
+      	    </action>
+      	    
+      	    <action name="InstalacionInsertar" class="cl.st.reporte.controller.actions.InstalacionAction" method="insertar">
+      	     	<interceptor-ref name="json">
+					<param name="enableSMD">true</param>
+				</interceptor-ref>
+       	   		<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+        		<param name="inputName">inputStream</param>
+			</result>
+      	    </action>
+      	    <!-- Instalaciones -->
+      	    <action name="Instalaciones" class="cl.st.reporte.controller.actions.InstalacionAction" method="pagina">
+      	    <param name="idAgendado">${idAgendado}</param>
+			<result name="success">app/Mantenedores/JSP_Probados/instalaciones.jsp</result>
+			</action>
+			
+			<action name="Instalaciones" class="cl.st.reporte.controller.actions.InstalacionAction" method="pagina">
+			<result name="success">app/Mantenedores/JSP_Probados/instalaciones.jsp</result>
+			</action>
+      	    <!-- Fin Instalaciones -->
+      	    <!-- Retornos -->
+      	    <action name="Retornos" class="cl.st.reporte.controller.actions.RetornoAction" method="pagina">
+			<result name="success">app/Mantenedores/JSP_Probados/retornos.jsp</result>
+			</action>
+			
+			<action name="RetornoInsertar" class="cl.st.reporte.controller.actions.RetornoAction" method="insertar">
+      	     	<interceptor-ref name="json">
+					<param name="enableSMD">true</param>
+				</interceptor-ref>
+       	   		<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+        		<param name="inputName">inputStream</param>
+			</result>
+      	    </action>
+      	    <!-- Fin retornos -->
+      	    
+      	    <!-- Pagina Principal -->
+      	    <action name="Home" class="cl.st.reporte.controller.actions.PrincipalAction" method="pagina">
+			<result name="success">app/Mantenedores/principal/principal.jsp</result>
+			</action>
+      	    <!-- Fin Página Priciapl -->
+      	    <!-- asignaciones -->
+      	    <action name="Asignaciones" class="cl.st.reporte.controller.actions.AsignacionAction" method="pagina">
+      	    <param name="idAgendado">${idAgendado}</param>
+			<result name="success">app/Mantenedores/JSP_Probados/asignaciones.jsp</result>
+			</action>
+			
+			<action name="Asignaciones" class="cl.st.reporte.controller.actions.AsignacionAction" method="pagina">
+			<result name="success">app/Mantenedores/JSP_Probados/asignaciones.jsp</result>
+			</action>
+			
+			<action name="AsignacionInsertar" class="cl.st.reporte.controller.actions.AsignacionAction" method="insertar">
+				<interceptor-ref name="json">
+					<param name="enableSMD">true</param>
+				</interceptor-ref>
+				<result name="success" type="stream">
+					<param name="contentType">text/html</param>
+	        		<param name="inputName">inputStream</param>
+				</result>
+			</action>
+			
+			<action name="AsginacionReasignacion" class="cl.st.reporte.controller.actions.AsignacionAction" method="reasignar">
+				<interceptor-ref name="json">
+					<param name="enableSMD">true</param>
+				</interceptor-ref>
+				<result name="success" type="stream">
+					<param name="contentType">text/html</param>
+	        		<param name="inputName">inputStream</param>
+				</result>
+			</action>
+      	    <!-- Fin asignaciones -->
+<!-- 30/11/2017 -->			
+
+			<!-- Axel Andrade -->
+			<action name="ingreso_activo" class="Prueba_select.BodegaAction">			    
+				<result name="success">app/Mantenedores/JSP_Probados/Ingreso_activos_bodega.jsp</result>						
+			</action>
+			
+			
+			<!-- action ingreso detalle activo -->
+			<action name="ingreso_detalle" class="Prueba_select.TipoActivoAction" method="listarGeneral">
+			<param name="factura">${factura}</param>
+			<param name="bodega">${bodega}</param>
+			<param name="empresa">${empresa}</param>
+			<result name="success">app/Mantenedores/JSP_Probados/Ingreso_Detalle.jsp</result>						
+			</action>
+			
+			<action name="ingreso_compra" class="Prueba_select.CompraAction" method="insertar">
+				<interceptor-ref name="json">
+					<param name="enableSMD">true</param>
+				</interceptor-ref>
+				<result name="success">app/Mantenedores/JSP_Probados/Ingreso_activos_bodega.jsp</result>
+										
+			</action>
+			
+			<action name="Despacho" class="Prueba_select.DespachoAction" >			    
+				<result name="success">app/Mantenedores/JSP_Probados/Despacho.jsp</result>						
+			</action>
+			
+			<action name="consulta" class="Prueba_select.ConsultaAction">			    
+				<result name="success">app/Mantenedores/ccu_copiado/consulta.jsp</result>						
+			</action> 
+			<!-- Axel Andrade -->
+			
+	</package>
+	
+	<package name="Json" namespace="/Json" extends="json-default">
+	
+	
+			
+			<action name="RegionJson" class="Prueba_select.RegionAction">
+       	   		<result type="json" />
+      	    </action>
+      	    
+      	    <action name="EmpresaJson" class="Prueba_select.EmpresaAction">
+       	   		<result type="json" />
+      	    </action>
+      	    
+      	    <action name="SolicitudEmpresaJson" class="Prueba_select.SolicitudEquipoAction">
+       	   		<result type="json" />
+      	    </action>
+      	    
+      	     <action name="ValidacionTokenJson" class="Prueba_select.SolicitudEquipoAction" method="validar">
+      	     	<interceptor-ref name="json">
+					<param name="enableSMD">true</param>
+				</interceptor-ref>
+       	   		<result type="json" />
+      	    </action>
+      	    
+      	     <action name="CargarSelectModelosJson" class="Prueba_select.SolicitudEquipoAction" method="listarModelos">
+      	     	<interceptor-ref name="json">
+					<param name="enableSMD">true</param>
+				</interceptor-ref>
+       	   		<result type="json" />
+      	    </action>
+      	    
+      	     <action name="CargarSelectAccesoriosJson" class="Prueba_select.PartesPiezasAction" method="listarPiezas">
+      	     	<interceptor-ref name="json">
+					<param name="enableSMD">true</param>
+				</interceptor-ref>
+       	   		<result type="json" />
+      	    </action>
+      	    
+      	    <action name="RolesJson" class="Prueba_select.RolesAction">
+       	   		<result type="json" />
+      	    </action>
+      	    
+      	    <action name="busqueda_empresa" class="Prueba_select.EmpresaAction" method="listar">
+				<interceptor-ref name="json">
+					<param name="enableSMD">true</param>
+				</interceptor-ref>
+			<result type="json" />
+		    </action>
+      	   
+      	   <action name="busqueda_piezas" class="Prueba_select.PartesPiezasAction" method="listarPiezas">
+				<interceptor-ref name="json">
+					<param name="enableSMD">true</param>
+				</interceptor-ref>
+			<result type="json" />
+		    </action>
+      	    
+      	    <action name="ComunaJson" class="Prueba_select.ComunaAction">
+      	    <interceptor-ref name="json">
+				<param name="enableSMD">true</param>
+			</interceptor-ref>
+       	   		<result type="json" />
+      	    </action>
+      	    
+      	    <action name="UenJson" class="Prueba_select.UenAction">
+      	    <interceptor-ref name="json">
+				<param name="enableSMD">true</param>
+			</interceptor-ref>
+       	   		<result type="json" />
+      	    </action>
+      	    
+      	    <action name="CCJson" class="Prueba_select.CentroCostoAction">
+      	    <interceptor-ref name="json">
+				<param name="enableSMD">true</param>
+			</interceptor-ref>
+       	   		<result type="json" />
+      	    </action>
+      	    
+      	    <action name="FechasAgendaJson" class="Prueba_select.AgendamientoAction" method="buscar">
+      	    <interceptor-ref name="json">
+				<param name="enableSMD">true</param>
+			</interceptor-ref>
+       	   		<result type="json" />
+      	    </action>
+      	    
+      	    <action name="BuscarAgendado" class="Prueba_select.AgendamientoAction" method="buscarAgendado">
+      	    <interceptor-ref name="json">
+				<param name="enableSMD">true</param>
+			</interceptor-ref>
+       	   		<result type="json" />
+      	    </action>
+      	    
+      	    <action name="MarcasDisponibles" class="Prueba_select.MarcaAction" method="buscarMarcasDisponibles">
+       	   		<result type="json" />
+      	    </action>
+      	    
+      	    <action name="TipoActivosDisponibles" class="Prueba_select.TipoActivoAction" method="listarGeneral">
+       	   		<result type="json" />
+      	    </action>
+      	    
+      	    <action name="ListarSucursales" class="Prueba_select.SucursalesAction" method="listar">
+      	    <interceptor-ref name="json">
+				<param name="enableSMD">true</param>
+			</interceptor-ref>
+       	   		<result type="json" />
+      	    </action>
+      	    
+      	    <action name="CargaEmpresasListas" class="Prueba_select.SbuuAction" method="listarEmpresas">
+      	     	<interceptor-ref name="json">
+					<param name="enableSMD">true</param>
+				</interceptor-ref>
+       	   		<result type="json" />
+      	    </action>
+      	    
+      	   <action name="ModelosJson" class="Prueba_select.ModeloAction" method="listar">
+       	   		<result type="json" />
+      	    </action>
+      	    
+      	    <action name="FeriadosJson" class="Prueba_select.FeriadoAction" method="listar">
+       	   		<result type="json" />
+      	    </action>
+      	    <!-- Axel Andrade -->
+      	      <action name="BodegasJson" class="Prueba_select.BodegaAction">
+       	   		<result type="json" />
+      	    </action>
+      	    
+      	    <action name="ProveedoresJson" class="Prueba_select.ProveedorAction">
+       	   		<result type="json" />
+      	    </action>
+      	    
+      	     <action name="ReceptoresJson" class="Prueba_select.ReceptorAction">
+       	   		<result type="json" />
+      	    </action>      	    
+      	
+      	    
+      	    <action name="ingreso_activos" class="Prueba_select.ActivosAction" method="insertar_activo">	
+      	     	<interceptor-ref name="json">
+					<param name="enableSMD">true</param>
+				</interceptor-ref>
+				
+				<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+        		<param name="inputName">inputStream</param> 
+        		</result>      	   		
+      	    </action>
+      	    
+      	    <action name="Cargaselectrack" class="Prueba_select.RackAction" method="listar">
+      	    	<result type="json" />									
+			</action>
+			
+			<action name="CargarSelectPosicionesJson" class="Prueba_select.PosicionAction" method="listar">
+				<interceptor-ref name="json">
+					<param name="enableSMD">true</param>
+				</interceptor-ref>	
+				<result type="json" />							
+			</action>
+      	    <!-- AsginacionesJSon -->
+      	    <action name="AsginacionPersonaPorRut" class="cl.st.reporte.controller.actions.AsignacionAction" 
+      	    method="buscarPersonaPorRut">
+      	     	<interceptor-ref name="json">
+					<param name="enableSMD">true</param>
+				</interceptor-ref>
+       	   		<result type="json" />
+      	    </action>
+      	    
+      	    <action name="AsginacionActivoPorSerie" class="cl.st.reporte.controller.actions.AsignacionAction" 
+      	    method="buscarActivoPorSerie">
+      	     	<interceptor-ref name="json">
+					<param name="enableSMD">true</param>
+				</interceptor-ref>
+       	   		<result type="json" />
+      	    </action>
+      	    <!-- Fin AsignacionesJson -->
+      	    
+      	    <!-- Persona Json -->
+      	    <action name="PersonaPorRut" class="Prueba_select.PersonaAction" 
+      	    method="buscarPersonaPorRut">
+      	     	<interceptor-ref name="json">
+					<param name="enableSMD">true</param>
+				</interceptor-ref>
+       	   		<result type="json" />
+      	    </action>
+      	    <!-- Fin Persona Json -->
+      	    
+      	    <!-- CausaRetornoJson -->
+      	    <action name="CausasRetornosJson" class="cl.st.reporte.controller.actions.CausaRetornoAction" 
+      	    method="listar">
+      	     	<interceptor-ref name="json">
+					<param name="enableSMD">true</param>
+				</interceptor-ref>
+       	   		<result type="json" />
+      	    </action>
+      	    <!-- Fin CausaRetornoJson -->
+      	    <!-- RetornosJson -->
+      	    <action name="RetornosPersonaPorRutActivoPorSerie" class="cl.st.reporte.controller.actions.RetornoAction" 
+      	    method="buscarActivoPorSeriePersonaPorRut">
+      	     	<interceptor-ref name="json">
+					<param name="enableSMD">true</param>
+				</interceptor-ref>
+       	   		<result type="json" />
+       	   	</action>	
+      	    <!-- Fin RetornosJson -->
+      	    <!-- TecnicosJson -->
+      	    <action name="TecnicosBuscarPorRut" class="cl.st.reporte.controller.actions.TecnicoAction" 
+      	    method="buscarTecnicoPorRut">
+      	     	<interceptor-ref name="json">
+					<param name="enableSMD">true</param>
+				</interceptor-ref>
+       	   		<result type="json" />
+       	   	</action>
+      	    <!-- Fin TecnicosJson -->
+      	    <!-- InstalacionesJSon -->
+      	    <action name="InstalacionesBuscarAsignacionPorSerial" class="cl.st.reporte.controller.actions.InstalacionAction" 
+      	    method="buscarAsignacionPorSerial">
+      	     	<interceptor-ref name="json">
+					<param name="enableSMD">true</param>
+				</interceptor-ref>
+       	   		<result type="json" />
+       	   	</action>
+      	    <!-- Fin InstalacionesJson -->
+      	    <action name="NumeroProducto" class="Prueba_select.ModeloAction" method="listarNumeroProducto">
+      	     	<interceptor-ref name="json">
+					<param name="enableSMD">true</param>
+				</interceptor-ref>
+       	   		<result type="json" />
+      	    </action>
+      	    
+      	    <action name="busqueda_activos" class="Prueba_select.ActivosAction" method="buscar_activo">
+				<interceptor-ref name="json">
+					<param name="enableSMD">true</param>
+				</interceptor-ref>
+				<result type="json" />
+		    </action>
+		    
+		    <action name="CourierJson" class="Prueba_select.DespachoAction" method="listar_courier">
+       	   		<result type="json" />
+      	    </action>
+      	    
+      	    <action name="Consulta_serie_activo" class="Prueba_select.ConsultaAction" method="consultar_serie">
+				<interceptor-ref name="json">
+					<param name="enableSMD">true</param>
+				</interceptor-ref>
+				<result type="json" />
+		    </action>
+      	     <!-- Axel Andrade -->
+    </package>
+    <!-- Luis Zambrano -->	
+</struts>
